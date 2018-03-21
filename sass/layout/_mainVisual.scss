@@ -1,0 +1,13 @@
+.l-mainVisual {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
+    &__logo {
+        position: absolute;
+        margin: 0 auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}

@@ -12,16 +12,16 @@ var pleeease = require('gulp-pleeease');
 var babel = require('gulp-babel');
 
 gulp.task('sass', function() {
-  gulp.src("./src/sass/style.scss")
+  gulp.src("./sass/style.scss")
     .pipe(plumber())
     .pipe(sass({
-      outputStyle: 'expanded'
+      outputStyle: 'compressed'
     }))
     .pipe(pleeease({
       autoprefixer: {
         browsers: ['last 2 versions']
       }}))
-    .pipe(gulp.dest('dist/css/'));
+    .pipe(gulp.dest('css/'));
 });
 
 gulp.task('minify-js', function() {
@@ -31,7 +31,7 @@ gulp.task('minify-js', function() {
 });
 
 gulp.task("imageMinTask", function() {
-  gulp.src("./src/images/*.{png,jpg,svg}")
+  gulp.src("./images/*.{png,jpg,svg}")
     .pipe(imagemin([
       pngquant({
         quality: '65-80',
@@ -48,7 +48,7 @@ gulp.task("imageMinTask", function() {
 });
 
 gulp.task('default', function() {
-  gulp.watch('./src/sass/*.scss', ['sass']);
+  gulp.watch('./sass/**/*.scss', ['sass']);
   gulp.watch('./src/js/*.js', ['minify-js']);
   gulp.watch('./src/images/*.{png,jpg,svg}', ['imageMinTask']);
 });

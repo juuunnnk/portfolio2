@@ -1,5 +1,5 @@
 var animData = {
-    container: document.getElementById('lottie'),
+    container: document.getElementById('logo'),
     renderer: 'svg',
     loop: false,
     prerender: true,
