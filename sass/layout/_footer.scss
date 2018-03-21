@@ -1,7 +1,9 @@
 .l-footer {
     position: relative;
     &__copyright > p {
-        display: inline-block;
+        display: block;
+        justify-content: center;
+        text-align: center;
         margin: 0 auto;
     }
 }
