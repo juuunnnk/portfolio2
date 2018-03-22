@@ -1,0 +1,36 @@
+.l-header {
+    padding-top: 1.5rem;
+
+    &__items {
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    &__item {
+        font-size: 1.25rem;
+        font-weight: 700;
+        font-style: italic;
+        list-style: none;
+        letter-spacing: .1rem;
+
+        a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 1.0rem;
+            transition: all .5s cubic-bezier(0.04, 0.66, 0.13, 0.96);
+
+            &:hover {
+                color: rgb(95, 96, 114);
+                text-shadow: 3px 2px 0 rgb(223, 223, 223);
+            }
+            &::selection {
+                background: rgb(236, 240, 34);
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        //display: none;
+    }
+}

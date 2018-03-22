@@ -1,9 +1,12 @@
 .l-footer {
     position: relative;
+    bottom: .5rem;
     &__copyright > p {
-        display: block;
-        justify-content: center;
         text-align: center;
-        margin: 0 auto;
+        font-style: italic;
+        &::selection {
+            background: rgb(236, 240, 34);
+        }
     }
+
 }
