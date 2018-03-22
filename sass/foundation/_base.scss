@@ -5,3 +5,13 @@
 body {
     font-family: 'Rajdhani', sans-serif;
 }
+
+* {
+    &::selection {
+        background: rgb(236, 240, 34);
+    }
+}
+
+li {
+    list-style: none;
+}
