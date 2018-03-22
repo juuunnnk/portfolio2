@@ -13,17 +13,19 @@
     }
 
     &__name {
-        font-size: 2.0rem;
+        font-size: 3.0rem;
+        font-style: italic;
+
         margin: 0;
         margin-bottom: 1.0rem;
     }
 
     &__description {
-        color: rgb(153, 153, 153);
+        color: rgb(77, 77, 77);
         line-height: 2.0rem;
 
         a {
-            color: rgb(153, 153, 153);
+            color: rgb(77, 77, 77);
         }
     }
 
@@ -39,7 +41,7 @@
         margin-right: .5rem;
         & > a {
             font-style: italic;
-            color: rgb(153, 153, 153);
+            color: rgb(0, 0, 0);
             text-decoration: none;
         }
     }

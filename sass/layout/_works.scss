@@ -1,0 +1,23 @@
+.l-works {
+    width: 100%;
+
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        width: calc(100% / 3);
+        height: calc(100vw / 3);
+        transition: all .3s cubic-bezier(0.07, 0.63, 0.23, 0.87);
+
+        & img {
+            width: 100%;
+            overflow: hidden;
+        }
+        &:hover {
+            opacity: .5;
+            //border: 8px solid rgb(0, 0, 0);
+        }
+    }
+}
