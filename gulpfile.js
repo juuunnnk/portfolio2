@@ -1,18 +1,18 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass')
-var autoprefixer = require('gulp-autoprefixer');
-var minifycss = require('gulp-minify-css');
-var uglify = require('gulp-uglify');
-var babel = require('gulp-babel');
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
-var mozjpeg = require('imagemin-mozjpeg');
-var svgo = require('gulp-svgo');
-var plumber = require('gulp-plumber');
-var pleeease = require('gulp-pleeease');
+const gulp = require('gulp');
+const sass = require('gulp-sass')
+const autoprefixer = require('gulp-autoprefixer');
+const minifycss = require('gulp-minify-css');
+const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
+const imagemin = require('gulp-imagemin');
+const pngquant = require('imagemin-pngquant');
+const mozjpeg = require('imagemin-mozjpeg');
+const svgo = require('gulp-svgo');
+const plumber = require('gulp-plumber');
+const pleeease = require('gulp-pleeease');
 
 //compile
-gulp.task('compile', function () {
+gulp.task('compile', () => {
   //js
   gulp.src("./src/js/*.js")
     .pipe(uglify())
@@ -33,7 +33,7 @@ gulp.task('compile', function () {
 });
 
 //画像圧縮
-gulp.task("imageMinTask", function () {
+gulp.task("imageMinTask", () => {
   gulp.src("./images/*.{png,jpg,svg}")
     .pipe(imagemin([
       pngquant({
@@ -50,7 +50,7 @@ gulp.task("imageMinTask", function () {
     .pipe(gulp.dest("dist/images/"));
 });
 
-gulp.task('default', function () {
+gulp.task('default', () => {
   gulp.watch(['./sass/**/*.scss', './src/js/*.js'],['compile']);
   gulp.watch('./src/images/*.{png,jpg,svg}', ['imageMinTask']);
 });
