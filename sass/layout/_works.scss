@@ -7,19 +7,25 @@
     }
 
     &__item {
-        width: calc(100% / 3);
-        height: calc(100vw / 3);
-        transition: opacity 0.3s cubic-bezier(0.07, 0.63, 0.23, 0.87);
-        & a {
-        }
+        width: calc(100%/ 3);
+        height: auto;
 
         & img {
-
+            display: block;
             width: 100%;
             overflow: hidden;
         }
+
         &:hover {
-            opacity: .5;
+            animation: strobe 1s ease forwards;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        padding-bottom: 2.0rem;
+        &__item {
+            width: calc(100%/ 2);
         }
     }
 }

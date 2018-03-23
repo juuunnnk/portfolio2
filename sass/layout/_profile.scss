@@ -1,6 +1,7 @@
 .l-profile {
     display: flex;
     width: 70%;
+    height: 480px;
     margin: 5.0rem auto;
     max-width: 640px;
 
@@ -9,20 +10,11 @@
     }
 
     &__image {
-
         & img {
-            width: 200px;
-
-            //hoverで拡大していく
-            overflow: hidden;
-            transition: all 20.0s linear;
-
-            &:hover {
-                width: 2048px;
-            }
+            width: 220px;
+            animation: profileImage_glitch .1s ease forwards;
+            animation-iteration-count: infinite;
         }
-
-
     }
 
     &__name {
@@ -56,14 +48,27 @@
             font-style: italic;
             color: rgb(0, 0, 0);
             text-decoration: none;
-            transition: all 0.5s cubic-bezier(0.04, 0.66, 0.13, 0.96);
 
             &:hover {
+                animation: strobe 1s ease forwards;
+                animation-iteration-count: infinite;
+            }
+        }
+    }
 
-                //font-size: 5.0rem;
-                //line-height: 5.0rem;
-                color: rgb(52, 60, 216);
-                text-shadow: 3px 2px 0 rgb(223, 223, 223);
+    @media screen and (max-width: 480px) {
+        width: 90%;
+        flex-wrap: wrap;
+        justify-content: center;
+        &__content {
+            margin: 0 .5rem;
+        }
+        &__image {
+            margin: 0 auto;
+            & img {
+                width: 100%;
+                animation: profileImage_glitch .1s ease forwards;
+                animation-iteration-count: infinite;
             }
         }
     }
