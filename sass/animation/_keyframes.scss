@@ -1,0 +1,91 @@
+// 共通ストロボ
+@keyframes strobe {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .8;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: .7;
+    }
+
+    40% {
+        opacity: .5;
+    }
+
+    50% {
+        opacity: .9;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: .6;
+    }
+
+    80% {
+        opacity: .9;
+    }
+
+    90% {
+        opacity: .7;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+// バグっぽい表示
+@keyframes profileImage_glitch {
+    0% {
+        width: 200px;
+    }
+
+    10% {
+        width: 200px;
+    }
+
+    11% {
+        transform: translateX(-15px);
+        width: 210px;
+        bottom: 1.0rem;
+    }
+
+    20% {
+        transform: translateX(-15px);
+        width: 210px;
+        bottom: 1.0rem;
+    }
+
+    21% {
+        transform: translateX(0);
+        transform: translateY(5px);
+        width: 200px;
+        bottom: 0;
+        right: 2.0rem;
+    }
+
+    99% {
+        transform: translateY(5px);
+        width: 200px;
+        bottom: 0;
+        right: 2.0rem;
+    }
+
+    100% {
+        transform: translateY(0);
+        width: 220px;
+    }
+}
+
+// メニュー表示アニメ
