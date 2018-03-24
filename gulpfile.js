@@ -4,6 +4,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const minifycss = require('gulp-minify-css');
 const uglify = require('gulp-uglify');
 const babel = require('gulp-babel');
+const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const pngquant = require('imagemin-pngquant');
 const mozjpeg = require('imagemin-mozjpeg');
@@ -14,9 +15,18 @@ const pleeease = require('gulp-pleeease');
 //compile
 gulp.task('compile', () => {
   //js
-  gulp.src("./src/js/*.js")
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js/'));
+  gulp.src("./babel/*.es6")
+    .pipe(babel())
+    .pipe(gulp.dest('./js/'));
+
+  //js圧縮
+  // gulp.src("./js/*.js")
+  //   .pipe(plumber())
+  //   .pipe(uglify())
+  //   .pipe(rename({
+  //     extname: '.min.js'
+  //   }))
+  //   .pipe(gulp.dest('./js/'));
 
   //css
   gulp.src("./sass/style.scss")
@@ -47,10 +57,10 @@ gulp.task("imageMinTask", () => {
       }),
       svgo(),
     ]))
-    .pipe(gulp.dest("dist/images/"));
+    .pipe(gulp.dest("/images/"));
 });
 
 gulp.task('default', () => {
-  gulp.watch(['./sass/**/*.scss', './src/js/*.js'],['compile']);
-  gulp.watch('./src/images/*.{png,jpg,svg}', ['imageMinTask']);
+  gulp.watch(['./sass/**/*.scss', './babel/*.es6'], ['compile']);
+  gulp.watch('./images/*.{png,jpg,svg}', ['imageMinTask']);
 });
