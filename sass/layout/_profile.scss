@@ -4,6 +4,7 @@
     height: 480px;
     margin: 5.0rem auto;
     max-width: 640px;
+    align-items: center;
 
     &__content {
         margin: 0 1.0rem;
@@ -12,8 +13,10 @@
     &__image {
         & img {
             width: 220px;
-            animation: profileImage_glitch .1s ease forwards;
-            animation-iteration-count: infinite;
+            &:hover {
+                animation: profileImage_glitch .1s ease forwards;
+                animation-iteration-count: infinite;
+            }
         }
     }
 
@@ -60,15 +63,18 @@
         width: 90%;
         flex-wrap: wrap;
         justify-content: center;
+
         &__content {
             margin: 0 .5rem;
         }
+
         &__image {
             margin: 0 auto;
+
             & img {
-                width: 100%;
-                animation: profileImage_glitch .1s ease forwards;
-                animation-iteration-count: infinite;
+                width: 200px;
+                //animation: profileImage_glitch .1s ease forwards;
+                //animation-iteration-count: infinite;
             }
         }
     }
