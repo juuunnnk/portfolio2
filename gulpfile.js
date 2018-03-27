@@ -12,21 +12,17 @@ const svgo = require('gulp-svgo');
 const plumber = require('gulp-plumber');
 const pleeease = require('gulp-pleeease');
 const webpack = require('webpack');
+const webpackStream = require('webpack-stream');
+const webpackConfig = require('./webpack.config'); // webpack.config.jsの設定を読み込む
 
 //watch
 gulp.task('watch', () => {
-  gulp.watch(['./src/sass/**/*.scss', './src/js/*.es6', './src/*.html', './src/json/*.json'], ['compile']);
+  gulp.watch(['./src/sass/**/*.scss', './src/js/**/*', './src/*.html', './src/json/*.json'], ['compile']);
   gulp.watch('./src/images/*', ['imageMinTask']);
 });
 
-
 //compile
 gulp.task('compile', () => {
-
-  //js
-  gulp.src('./src/js/**/*')
-    .pipe(babel())
-    .pipe(gulp.dest('./docs/js/'));
 
   //css
   gulp.src('./src/sass/style.scss')
@@ -50,11 +46,17 @@ gulp.task('compile', () => {
     .pipe(gulp.dest('./docs/json/'));
 });
 
+//webpack
+gulp.task('webpack', () => {
+  return webpackStream(webpackConfig, webpack)
+    .pipe(gulp.dest("./docs/js"));
+
+});
+
 //画像圧縮
 gulp.task('imageMin', () => {
   gulp.src('./src/images/**/*')
     .pipe(gulp.dest('./docs/images/'));
-
   gulp.src('./docs/images/**/*.{png,jpg,svg}')
     .pipe(imagemin([
       pngquant({
@@ -71,4 +73,4 @@ gulp.task('imageMin', () => {
     .pipe(gulp.dest('./docs/images/'));
 });
 
-gulp.task('default', ['compile', 'imageMin', 'watch']);
+gulp.task('default', ['compile', 'imageMin','webpack']);
