@@ -18,7 +18,7 @@ gulp.task('compile', () => {
   //js
   gulp.src('./src/js/**/*')
     .pipe(babel())
-    .pipe(gulp.dest('./dist/js/'));
+    .pipe(gulp.dest('./docs/js/'));
 
   //css
   gulp.src('./src/sass/style.scss')
@@ -31,23 +31,23 @@ gulp.task('compile', () => {
         browsers: ['last 2 versions']
       }
     }))
-    .pipe(gulp.dest('./dist/css/'));
+    .pipe(gulp.dest('./docs/css/'));
 
   //html移動
   gulp.src('./src/*.html')
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./docs/'));
 
   //json移動
   gulp.src('./src/json/**/*')
-    .pipe(gulp.dest('./dist/json/'));
+    .pipe(gulp.dest('./docs/json/'));
 });
 
 //画像圧縮
 gulp.task('imageMinTask', () => {
   gulp.src('./src/images/**/*')
-    .pipe(gulp.dest('./dist/images/'));
+    .pipe(gulp.dest('./docs/images/'));
 
-  gulp.src('./dist/images/**/*.{png,jpg,svg}')
+  gulp.src('./docs/images/**/*.{png,jpg,svg}')
     .pipe(imagemin([
       pngquant({
         quality: '65-80',
@@ -60,7 +60,7 @@ gulp.task('imageMinTask', () => {
       }),
       svgo(),
     ]))
-    .pipe(gulp.dest('./dist/images/'));
+    .pipe(gulp.dest('./docs/images/'));
 });
 
 gulp.task('watch', () => {
