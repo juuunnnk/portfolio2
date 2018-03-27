@@ -11,25 +11,17 @@ const mozjpeg = require('imagemin-mozjpeg');
 const svgo = require('gulp-svgo');
 const plumber = require('gulp-plumber');
 const pleeease = require('gulp-pleeease');
+const webpack = require('webpack');
 
 //compile
 gulp.task('compile', () => {
   //js
-  gulp.src("./babel/*.es6")
+  gulp.src('./src/js/**/*')
     .pipe(babel())
-    .pipe(gulp.dest('./js/'));
-
-  //js圧縮
-  // gulp.src("./js/*.js")
-  //   .pipe(plumber())
-  //   .pipe(uglify())
-  //   .pipe(rename({
-  //     extname: '.min.js'
-  //   }))
-  //   .pipe(gulp.dest('./js/'));
+    .pipe(gulp.dest('./dist/js/'));
 
   //css
-  gulp.src("./sass/style.scss")
+  gulp.src('./src/sass/style.scss')
     .pipe(plumber())
     .pipe(sass({
       outputStyle: 'compressed'
@@ -39,12 +31,23 @@ gulp.task('compile', () => {
         browsers: ['last 2 versions']
       }
     }))
-    .pipe(gulp.dest('css/'));
+    .pipe(gulp.dest('./dist/css/'));
+
+  //html移動
+  gulp.src('./src/*.html')
+    .pipe(gulp.dest('./dist/'));
+
+  //json移動
+  gulp.src('./src/json/**/*')
+    .pipe(gulp.dest('./dist/json/'));
 });
 
 //画像圧縮
-gulp.task("imageMinTask", () => {
-  gulp.src("./images/*.{png,jpg,svg}")
+gulp.task('imageMinTask', () => {
+  gulp.src('./src/images/**/*')
+    .pipe(gulp.dest('./dist/images/'));
+
+  gulp.src('./dist/images/**/*.{png,jpg,svg}')
     .pipe(imagemin([
       pngquant({
         quality: '65-80',
@@ -57,10 +60,12 @@ gulp.task("imageMinTask", () => {
       }),
       svgo(),
     ]))
-    .pipe(gulp.dest("/images/"));
+    .pipe(gulp.dest('./dist/images/'));
 });
 
-gulp.task('default', () => {
-  gulp.watch(['./sass/**/*.scss', './babel/*.es6'], ['compile']);
-  gulp.watch('./images/*.{png,jpg,svg}', ['imageMinTask']);
+gulp.task('watch', () => {
+  gulp.watch(['./src/sass/**/*.scss', './src/js/*.es6', './src/*.html', './src/json/*.json'], ['compile']);
+  gulp.watch('./src/images/*', ['imageMinTask']);
 });
+
+gulp.task('default', ['compile', 'imageMinTask', 'watch']);
