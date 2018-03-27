@@ -13,8 +13,16 @@ const plumber = require('gulp-plumber');
 const pleeease = require('gulp-pleeease');
 const webpack = require('webpack');
 
+//watch
+gulp.task('watch', () => {
+  gulp.watch(['./src/sass/**/*.scss', './src/js/*.es6', './src/*.html', './src/json/*.json'], ['compile']);
+  gulp.watch('./src/images/*', ['imageMinTask']);
+});
+
+
 //compile
 gulp.task('compile', () => {
+
   //js
   gulp.src('./src/js/**/*')
     .pipe(babel())
@@ -43,7 +51,7 @@ gulp.task('compile', () => {
 });
 
 //画像圧縮
-gulp.task('imageMinTask', () => {
+gulp.task('imageMin', () => {
   gulp.src('./src/images/**/*')
     .pipe(gulp.dest('./docs/images/'));
 
@@ -63,9 +71,4 @@ gulp.task('imageMinTask', () => {
     .pipe(gulp.dest('./docs/images/'));
 });
 
-gulp.task('watch', () => {
-  gulp.watch(['./src/sass/**/*.scss', './src/js/*.es6', './src/*.html', './src/json/*.json'], ['compile']);
-  gulp.watch('./src/images/*', ['imageMinTask']);
-});
-
-gulp.task('default', ['compile', 'imageMinTask', 'watch']);
+gulp.task('default', ['compile', 'imageMin', 'watch']);
