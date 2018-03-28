@@ -13,7 +13,11 @@ const plumber = require('gulp-plumber');
 const pleeease = require('gulp-pleeease');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
-const webpackConfig = require('./webpack.config'); // webpack.config.jsの設定を読み込む
+const browserSync = require('browser-sync').create();
+
+
+// webpack.config.jsの設定を読み込む
+const webpackConfig = require('./webpack.config');
 
 //watch
 gulp.task('watch', () => {
@@ -23,6 +27,10 @@ gulp.task('watch', () => {
 
 //compile
 gulp.task('compile', () => {
+
+  //ライブラリの移動仮
+  gulp.src('./src/js/library/**/*')
+    .pipe(gulp.dest('./docs/js/library/'));
 
   //css
   gulp.src('./src/sass/style.scss')
@@ -44,6 +52,7 @@ gulp.task('compile', () => {
   //json移動
   gulp.src('./src/json/**/*')
     .pipe(gulp.dest('./docs/json/'));
+
 });
 
 //webpack
@@ -51,6 +60,15 @@ gulp.task('webpack', () => {
   return webpackStream(webpackConfig, webpack)
     .pipe(gulp.dest("./docs/js"));
 
+});
+
+//ブラウザ
+gulp.task('browser-sync', function () {
+  browserSync.init({
+    server: {
+      baseDir: "./docs/"
+    }
+  });
 });
 
 //画像圧縮
@@ -73,4 +91,4 @@ gulp.task('imageMin', () => {
     .pipe(gulp.dest('./docs/images/'));
 });
 
-gulp.task('default', ['compile', 'imageMin','webpack']);
+gulp.task('default', ['compile', 'imageMin', 'webpack']);
