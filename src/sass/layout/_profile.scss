@@ -1,10 +1,13 @@
 .l-profile {
     display: flex;
     width: 70%;
-    height: 480px;
+    padding: 3.0rem 2.0rem;
+
+    //height: 480px;
     margin: 5.0rem auto;
     max-width: 640px;
     align-items: center;
+    border: dashed 2px #000;
 
     &__content {
         margin: 0 1.0rem;
@@ -13,6 +16,7 @@
     &__image {
         & img {
             width: 220px;
+
             &:hover {
                 animation: profileImage_glitch .1s ease forwards;
                 animation-iteration-count: infinite;
@@ -59,7 +63,7 @@
         }
     }
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 640px) {
         width: 90%;
         flex-wrap: wrap;
         justify-content: center;
@@ -73,8 +77,7 @@
 
             & img {
                 width: 200px;
-                //animation: profileImage_glitch .1s ease forwards;
-                //animation-iteration-count: infinite;
+                padding-bottom: 2.0rem;
             }
         }
     }
