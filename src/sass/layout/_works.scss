@@ -4,6 +4,7 @@
     &__items {
         display: flex;
         flex-wrap: wrap;
+        position: relative;
     }
 
     &__item {
@@ -17,7 +18,7 @@
         }
 
         &:hover {
-            animation: strobe 1s ease forwards;
+            animation: strobe 1s cubic-bezier(0.07, 0.7, 0.25, 1) forwards;
             animation-iteration-count: infinite;
         }
     }
@@ -28,4 +29,8 @@
             width: calc(100%/ 2);
         }
     }
+}
+
+.fadeIn {
+    animation: worksIn .5s ease forwards;
 }

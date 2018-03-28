@@ -1,2 +1,2 @@
-//import $ from "jquery";
-import { logo } from "./components/logo.js";
+import scrollAnime from "./components/scrollAnime.js";
+import logoAnime from "./components/logoAnime.js";

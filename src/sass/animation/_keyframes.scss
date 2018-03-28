@@ -1,7 +1,7 @@
 // 共通ストロボ
 @keyframes strobe {
     0% {
-        opacity: 0;
+        opacity: .2;
     }
 
     10% {
@@ -9,7 +9,7 @@
     }
 
     20% {
-        opacity: 0;
+        opacity: .2;
     }
 
     30% {
@@ -88,4 +88,20 @@
     }
 }
 
-// メニュー表示アニメ
+//worksの表示アニメ
+@keyframes worksIn {
+    0% {
+        //position: absolute;
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    50% {
+
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
