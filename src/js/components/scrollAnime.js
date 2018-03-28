@@ -1,11 +1,24 @@
 import $ from "jquery";
-import jqueryInview from "jquery-inview";
 
 $(function () {
-    $('.l-works__item').on('inview', function (event, isInView) {
-        if (isInView) {
-            //表示領域に入った時
-            $(this).addClass('fadeIn');
-        }
+    // $(window).ready(function () {
+    //     var worksPosition = $(this).offset().top;
+    //     var scroll = $(window).scrollTop();
+    //     var windowHeight = $(window).height();
+    //     $('.l-works__item').each(function () {
+    //         if (worksPosition > windowHeight - windowHeight / 5) {
+    //             $(this).css('opacity', '1.0');
+    //         }
+    //     })
+    // })
+    $(window).scroll(function () {
+        var worksPosition = $(this).offset().top;
+        var scroll = $(window).scrollTop();
+        var windowHeight = $(window).height();
+        $('.l-works__item').each(function () {
+            if (scroll > worksPosition - windowHeight + windowHeight / 5) {
+                $(this).addClass("fadeIn")
+            }
+        });
     });
 });
