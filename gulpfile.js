@@ -19,10 +19,17 @@ const browserSync = require('browser-sync').create();
 // webpack.config.jsの設定を読み込む
 const webpackConfig = require('./webpack.config');
 
+//webpack
+gulp.task('webpack', () => {
+  return webpackStream(webpackConfig, webpack)
+    .pipe(gulp.dest("./docs/js"));
+
+});
+
 //watch
 gulp.task('watch', () => {
   gulp.watch(['./src/sass/**/*.scss', './src/js/**/*', './src/*.html', './src/json/*.json'], ['compile']);
-  gulp.watch('./src/images/*', ['imageMinTask']);
+  gulp.watch('./src/js/**/*', ['webpack']);
 });
 
 //compile
@@ -55,12 +62,6 @@ gulp.task('compile', () => {
 
 });
 
-//webpack
-gulp.task('webpack', () => {
-  return webpackStream(webpackConfig, webpack)
-    .pipe(gulp.dest("./docs/js"));
-
-});
 
 //ブラウザ
 gulp.task('browser-sync', function () {
