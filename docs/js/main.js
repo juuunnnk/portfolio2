@@ -1,7 +1,8 @@
-// メインビジュアル画像のランダム表示
+// メインビジュアル画像の自動切り替え（クロスディゾルブ）
 const initMainVisual = () => {
+    const mainVisualContainer = document.querySelector('.l-home__hero-image');
     const mainVisualImg = document.getElementById('main-visual');
-    if (!mainVisualImg) return;
+    if (!mainVisualImg || !mainVisualContainer) return;
     
     const images = [
         './images/mv1.jpg',
@@ -11,17 +12,56 @@ const initMainVisual = () => {
         './images/mv5.jpg'
     ];
     
-    // ランダムな画像を選択
-    const randomImage = images[Math.floor(Math.random() * images.length)];
-    mainVisualImg.src = randomImage;
+    let currentIndex = Math.floor(Math.random() * images.length);
+    
+    // 初期画像を設定
+    mainVisualImg.src = images[currentIndex];
     
     // プリロード他の画像（パフォーマンス向上のため）
     images.forEach(src => {
-        if (src !== randomImage) {
-            const img = new Image();
-            img.src = src;
-        }
+        const img = new Image();
+        img.src = src;
     });
+    
+    // 5秒ごとに画像を切り替え（クロスディゾルブ）
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        
+        // 新しい画像要素を作成
+        const newImg = document.createElement('img');
+        newImg.src = images[currentIndex];
+        newImg.alt = mainVisualImg.alt;
+        newImg.loading = 'eager';
+        newImg.style.position = 'absolute';
+        newImg.style.top = '0';
+        newImg.style.left = '0';
+        newImg.style.width = '100%';
+        newImg.style.height = '100%';
+        newImg.style.objectFit = 'cover';
+        newImg.style.objectPosition = 'center';
+        newImg.style.borderRadius = '16px';
+        newImg.style.opacity = '0';
+        newImg.style.transition = 'opacity 1s ease-in-out';
+        
+        // コンテナにrelative positionを設定
+        mainVisualContainer.style.position = 'relative';
+        
+        // 新しい画像をコンテナに追加
+        mainVisualContainer.appendChild(newImg);
+        
+        // 少し遅れてフェードイン開始
+        setTimeout(() => {
+            newImg.style.opacity = '1';
+        }, 50);
+        
+        // 1秒後に古い画像を削除し、新しい画像をメイン画像に設定
+        setTimeout(() => {
+            mainVisualImg.src = images[currentIndex];
+            if (newImg.parentNode) {
+                newImg.parentNode.removeChild(newImg);
+            }
+        }, 1000);
+    }, 5000);
 };
 
 

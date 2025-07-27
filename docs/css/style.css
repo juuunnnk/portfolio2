@@ -643,6 +643,9 @@ html {
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 0 4rem;
   overflow: hidden;
 }
@@ -663,7 +666,7 @@ html {
     grid-template-rows: auto auto;
     justify-items: start;
     padding: 0 2rem;
-    gap: 3rem;
+    gap: 2rem;
     height: auto;
     min-height: 100vh;
     padding-top: max(6rem, env(safe-area-inset-top) + 2rem);
@@ -673,7 +676,21 @@ html {
 @media screen and (max-width: 480px) {
   .l-home__hero {
     padding: max(6rem, env(safe-area-inset-top) + 2rem) 1rem 2rem 1rem;
-    gap: 2rem;
+    gap: 1.5rem;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .l-home__hero {
+    max-width: 1400px;
+    gap: 6rem;
+    padding: 0 6rem;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .l-home__hero {
+    max-width: 1600px;
+    gap: 8rem;
+    padding: 0 8rem;
   }
 }
 .l-home__hero-content {
@@ -685,6 +702,7 @@ html {
 @media screen and (max-width: 768px) {
   .l-home__hero-content {
     padding-left: 0;
+    order: 1;
   }
 }
 .l-home__hero-image {
@@ -700,7 +718,7 @@ html {
   object-position: center;
   border-radius: 16px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
-  transition: all 0.4s ease;
+  transition: all 0.4s ease, opacity 0.3s ease;
 }
 .l-home__hero-image img:hover {
   transform: scale(1.02);
@@ -716,6 +734,18 @@ html {
   .l-home__hero-image img {
     width: 280px;
     height: 390px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .l-home__hero-image img {
+    width: 450px;
+    height: 600px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .l-home__hero-image img {
+    width: 500px;
+    height: 650px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -743,6 +773,16 @@ html {
     font-size: 2.5rem;
   }
 }
+@media screen and (min-width: 1400px) {
+  .l-home__title {
+    font-size: 5rem;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .l-home__title {
+    font-size: 6rem;
+  }
+}
 .l-home__subtitle {
   font-size: 1.25rem;
   font-weight: 400;
@@ -755,6 +795,16 @@ html {
 @media screen and (max-width: 480px) {
   .l-home__subtitle {
     font-size: 1.125rem;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .l-home__subtitle {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .l-home__subtitle {
+    font-size: 1.75rem;
   }
 }
 .l-home__container {
@@ -916,20 +966,20 @@ html {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1.5rem 0;
   color: #666;
 }
 .l-home__links-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
   padding: 0;
   margin: 0;
 }
-@media screen and (max-width: 480px) {
+@media screen and (min-width: 769px) {
   .l-home__links-list {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    gap: 2rem;
   }
 }
 .l-home__links-item {
@@ -937,27 +987,18 @@ html {
 }
 .l-home__link {
   display: inline-block;
-  padding: 0.5rem 0;
+  padding: 0;
   background: transparent;
   border: none;
   text-decoration: none;
   color: #000;
   font-weight: 400;
   font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid transparent;
-  transition: border-bottom-color 0.2s ease;
-  margin-right: 2rem;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease;
 }
 .l-home__link:hover {
-  border-bottom-color: #000;
-}
-@media screen and (max-width: 480px) {
-  .l-home__link {
-    margin-right: 0;
-    margin-bottom: 0.5rem;
-  }
+  opacity: 0.6;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -980,19 +1021,26 @@ html {
 .l-footer {
   position: relative;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 4rem;
+  padding: 2rem 0;
+  border-top: 1px solid #e0e0e0;
 }
 .l-footer__copyright > p {
   text-align: center;
-  font-style: italic;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
 }
 .l-footer__copyright > p::selection {
   background: rgb(236, 240, 34);
 }
 @media screen and (max-width: 480px) {
   .l-footer {
-    position: relative;
-    bottom: 2rem;
+    margin-top: 3rem;
+    padding: 1.5rem 0;
   }
 }
 
