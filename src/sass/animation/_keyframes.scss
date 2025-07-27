@@ -88,4 +88,123 @@
     }
 }
 
+// スクロールインジケーター
+@keyframes scroll-indicator {
+    0% {
+        opacity: 0.5;
+        transform: translateX(-50%) rotate(45deg) translateY(0);
+    }
+    
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) rotate(45deg) translateY(8px);
+    }
+    
+    100% {
+        opacity: 0.5;
+        transform: translateX(-50%) rotate(45deg) translateY(0);
+    }
+}
+
+// プロフィール画像グロー効果
+@keyframes profile-glow {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    
+    100% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+// プロフィール画像外周リング回転
+@keyframes profile-ring {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        border-color: rgba(236, 240, 34, 0.2);
+    }
+    
+    25% {
+        border-color: rgba(236, 240, 34, 0.4);
+    }
+    
+    50% {
+        transform: translate(-50%, -50%) rotate(180deg);
+        border-color: rgba(236, 240, 34, 0.6);
+    }
+    
+    75% {
+        border-color: rgba(236, 240, 34, 0.4);
+    }
+    
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+        border-color: rgba(236, 240, 34, 0.2);
+    }
+}
+
+// ミニマルなスクロールライン
+@keyframes scroll-line {
+    0% {
+        opacity: 0.4;
+        height: 1.5rem;
+    }
+    
+    50% {
+        opacity: 1;
+        height: 2.5rem;
+    }
+    
+    100% {
+        opacity: 0.4;
+        height: 1.5rem;
+    }
+}
+
+// フェードインアップ
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ロゴ登場
+@keyframes logo-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// メインビジュアル画像登場
+@keyframes image-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
 // メニュー表示アニメ
